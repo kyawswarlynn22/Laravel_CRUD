@@ -19,6 +19,7 @@ class AppointmentFactory extends Factory
         return [
             "dr_name"=>fake()->name(),
             "room_no"=>fake()->numerify('###'),
+            "date_time"=>fake()->dateTime(),
         ];
     }
 }

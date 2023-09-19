@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('dr_name',256);
             $table->integer('room_no');
+            $table->string('date_time',256);
             $table->integer('del_flg')->default(0);
             $table->timestamps();
         });
