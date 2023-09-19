@@ -15,8 +15,12 @@
         <span>-></span>
     </div>
     <div class=" flex flex-col">
-        <span>How about you?</span>
-        <span>Yes</span>
+        <span>{{ $messageDetail->text }}</span>
+        <span>@if ($messageDetail->message_person == 0)
+            No
+        @else
+            Yes
+        @endif</span>
     </div>
 </section>
 @endsection

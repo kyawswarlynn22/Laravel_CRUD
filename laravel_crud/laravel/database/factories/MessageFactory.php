@@ -17,7 +17,7 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            "text"=>fake()->text('200'),
+            "text"=>fake()->text('80'),
             "message_person" =>fake()->numberBetween($min = 0 ,$max = 1),
         ];
     }

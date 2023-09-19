@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class MessageController extends Controller
 {
@@ -11,7 +13,11 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('message.messageList');
+        $messageClass = new message();
+        $messageData = $messageClass->messageData();
+        return view('message.messageList', [
+            'messageData' => $messageData
+        ]);
     }
 
     /**
@@ -27,7 +33,11 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $addMessageClass = new message();
+    $addMessageClass->addMessage($request);
+        return redirect('/message');
+           
+        
     }
 
     /**
@@ -35,15 +45,31 @@ class MessageController extends Controller
      */
     public function show(string $id)
     {
-        return view('message.messageDetail');
+        $messageDetailClass = new message();
+        $messageDetail = $messageDetailClass->messageDetail($id);
+        if ($messageDetail == null) {
+            return view('errors.404');
+        } else {
+            return view('message.messageDetail', [
+                'messageDetail' => $messageDetail
+            ]);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        return view('message.editMessage');
+    {   
+        $messageDetailClass = new message();
+        $messageDetail = $messageDetailClass->messageDetail($id);
+        if ($messageDetail == null) {
+            return view('errors.404');
+        } else {
+            return view('message.editMessage', [
+                'messageDetail' => $messageDetail
+            ]);
+        }
     }
 
     /**
@@ -51,7 +77,9 @@ class MessageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       $messageUpdateClass = new message();
+       $messageUpdateClass->updateMessage($request,$id);
+       return redirect('/message');
     }
 
     /**
@@ -59,6 +87,13 @@ class MessageController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $messageDetailClass = new message();
+        $messageDetail = $messageDetailClass->messageDetail($id);
+        if ($messageDetail !== null) {
+            $messageDetailClass -> messageDel($id);
+        } else {
+            return view('errors.404');
+        } 
+        return redirect("/message");
     }
 }

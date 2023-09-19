@@ -87,6 +87,12 @@
                 @endforelse
             </tbody>
         </table>
+        <div class=" p-5">
+            {{ $roomData->links("pagination::tailwind") }}
+        </div>
     </div>
-    {{ $roomData->links('pagination::tailwind') }}
+   
+       
+    
+    
 @endsection

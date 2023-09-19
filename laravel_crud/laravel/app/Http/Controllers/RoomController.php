@@ -86,7 +86,10 @@ class RoomController extends Controller
     public function destroy(string $id)
     {
         $roomDelClass = new room();
-        $roomDelClass->roomDel($id);
+        $roomDetail = $roomDelClass->roomDetail($id);
+        if ($roomDetail !== null) {
+           $roomDelClass->roomDel($id);
+        }
         return redirect('/room');
     }
 }

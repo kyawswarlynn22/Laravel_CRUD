@@ -12,7 +12,7 @@ class room extends Model
 
     public function roomData()
     {
-        return DB::table('rooms')->orderBy('id', 'desc')->paginate(5);
+        return DB::table('rooms')->orderBy('id', 'desc')->where('del_flg',0)->paginate(5);
     }
 
     public function addRoom($resquest)
@@ -47,6 +47,8 @@ class room extends Model
     {
         DB::table('rooms')
             ->where('id', $id)
-            ->delete();
+            ->update([
+                "del_flg" => 1,
+            ]);
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('text',256);
             $table->integer('message_person');
+            $table->integer('del_flg')->default(0);
             $table->timestamps();
         });
     }
