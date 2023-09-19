@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\room;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -11,7 +12,11 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return view('room.roomList');
+        $roomClass = new room();
+        $roomData = $roomClass->roomData();
+        return view('room.roomList', [
+            "roomData" => $roomData,
+        ]);
     }
 
     /**
@@ -19,6 +24,7 @@ class RoomController extends Controller
      */
     public function create()
     {
+
         return view('room.addroom');
     }
 
@@ -27,7 +33,9 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $roomAddClass = new room();
+        $roomAddClass->addRoom($request);
+        return redirect('/room');
     }
 
     /**
@@ -35,7 +43,15 @@ class RoomController extends Controller
      */
     public function show(string $id)
     {
-        return view('room.roomDetails');
+        $roomDetailClass = new room();
+        $roomDetail = $roomDetailClass->roomDetail($id);
+        if ($roomDetail == null) {
+            return view('errors.404');
+        } else {
+            return view('room.roomDetails', [
+                "roomDetail" => $roomDetail
+            ]);
+        }
     }
 
     /**
@@ -43,7 +59,15 @@ class RoomController extends Controller
      */
     public function edit(string $id)
     {
-        return view('room.editRoom');
+        $roomDetailClass = new room();
+        $roomDetail = $roomDetailClass->roomDetail($id);
+        if ($roomDetail == null) {
+            return view('errors.404');
+        } else {
+            return view('room.editRoom', [
+                "roomDetail" => $roomDetail
+            ]);
+        }
     }
 
     /**
@@ -51,7 +75,9 @@ class RoomController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $roomupdateClass = new room();
+        $roomupdateClass->roomUpdate($request, $id);
+        return redirect('/room');
     }
 
     /**
@@ -59,6 +85,8 @@ class RoomController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $roomDelClass = new room();
+        $roomDelClass->roomDel($id);
+        return redirect('/room');
     }
 }

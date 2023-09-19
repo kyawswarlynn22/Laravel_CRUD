@@ -18,7 +18,7 @@ class RoomFactory extends Factory
     {
         return [
             "room_no" =>fake()->numerify("###"),
-            "status" =>fake()->numberBetween($min = 0 ,$max = 4),
+            "status" =>fake()->numberBetween($min = 0 ,$max = 2),
             "person" =>fake()->numberBetween($min = 0 ,$max = 4),
             "price" =>fake()->numerify("##"),
                 ];
