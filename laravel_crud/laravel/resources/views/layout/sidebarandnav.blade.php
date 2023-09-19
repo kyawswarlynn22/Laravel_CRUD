@@ -29,7 +29,7 @@
         <div class="py-4 overflow-y-auto">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#"
+                    <a href="/"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -58,11 +58,11 @@
                     </button>
                     <ul id="room" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="/addCategory"
+                            <a href="/room/create"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add Room</a>
                         </li>
                         <li>
-                            <a href="/categorylist"
+                            <a href="/room"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Room List</a>
                         </li>
 
@@ -84,13 +84,13 @@
                     </button>
                     <ul id="message" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="/createcustomer"
+                            <a href="/message/create"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
-                                Customer</a>
+                                Message</a>
                         </li>
                         <li>
-                            <a href="/customerlist"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Customer
+                            <a href="/message"
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Message
                                 List</a>
                         </li>
                     </ul>
@@ -111,12 +111,12 @@
                     </button>
                     <ul id="drug" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="/addpurchase"
+                            <a href="/drug/create"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add Drug
                             </a>
                         </li>
                         <li>
-                            <a href="/purchaselist"
+                            <a href="/drug"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Drug List
                             </a>
                         </li>
@@ -143,11 +143,11 @@
                     </button>
                     <ul id="appointment" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#"
+                            <a href="/appointment/create"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add Appointment</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="/appointment"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Appointment List</a>
                         </li>
                     </ul>

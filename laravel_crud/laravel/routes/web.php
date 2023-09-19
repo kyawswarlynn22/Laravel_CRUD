@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DrugController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::resource('room', RoomController::class);
+
+Route::resource('message', MessageController::class);
+
+Route::resource('drug', DrugController::class);
+
+Route::resource('appointment', AppointmentController::class);
