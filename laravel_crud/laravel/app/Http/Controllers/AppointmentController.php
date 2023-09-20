@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\appointment;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -11,7 +12,11 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('Apointment.appointList');
+        $apmListClass = new appointment();
+        $apmList = $apmListClass->apmList();
+        return view('Apointment.appointList', [
+            'apmList' => $apmList
+        ]);
     }
 
     /**
@@ -27,7 +32,9 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $apmAddClass = new appointment();
+        $apmAddClass->apmAdd($request);
+        return redirect('/appointment');
     }
 
     /**
@@ -35,7 +42,14 @@ class AppointmentController extends Controller
      */
     public function show(string $id)
     {
-        return view('Apointment.appointmentDetails');
+        $apmDetailClass  = new appointment();
+        $apmDetail = $apmDetailClass->apmDetail($id);
+        if ($apmDetail == null) {
+            return view('errors.404');
+        }
+        return view('Apointment.appointmentDetails', [
+            'apmDetail' => $apmDetail
+        ]);
     }
 
     /**
@@ -43,7 +57,14 @@ class AppointmentController extends Controller
      */
     public function edit(string $id)
     {
-        return view('Apointment.editAppointment');
+        $apmDetailClass  = new appointment();
+        $apmDetail = $apmDetailClass->apmDetail($id);
+        if ($apmDetail == null) {
+            return view('errors.404');
+        }
+        return view('Apointment.editAppointment', [
+            'apmDetail' => $apmDetail
+        ]);
     }
 
     /**
@@ -51,7 +72,9 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $apmUpdateClass = new appointment();
+        $apmUpdateClass->apmUpdate($request, $id);
+        return redirect('/appointment');
     }
 
     /**
@@ -59,6 +82,12 @@ class AppointmentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $apmDetailClass  = new appointment();
+        $apmDetail = $apmDetailClass->apmDetail($id);
+        if ($apmDetail !== null) {
+            $apmDetailClass->apmDel($id);
+        }
+        return redirect('/appointment');
     }
 }

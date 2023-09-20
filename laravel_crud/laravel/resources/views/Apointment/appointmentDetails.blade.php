@@ -19,10 +19,9 @@
      
     </div>
     <div class=" flex flex-col">
-        <span>Dr.Kaythi</span>
-        <span>Room102</span>
-        <span>30/03/2023 4:00PM</span>
-        
+        <span>Dr.{{ $apmDetail-> dr_name}}</span>
+        <span>Room{{ $apmDetail->room_no }}</span>
+        <span>{{ $apmDetail->date_time }}</span>
     </div>
 </section>
 @endsection
