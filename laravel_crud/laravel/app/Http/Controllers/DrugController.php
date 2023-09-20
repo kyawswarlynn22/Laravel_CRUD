@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\drug;
+use App\Models\room;
 use Illuminate\Http\Request;
 
 class DrugController extends Controller
@@ -11,7 +13,11 @@ class DrugController extends Controller
      */
     public function index()
     {
-        return view('Drug.drugList');
+        $drugListClass = new drug();
+        $drugList = $drugListClass->drugList();
+        return view('Drug.drugList',[
+            "drugList" => $drugList
+        ]);
     }
 
     /**
@@ -27,7 +33,9 @@ class DrugController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $drugAddClass = new drug();
+        $drugAddClass->drugAdd($request);
+        return redirect('/drug');
     }
 
     /**
@@ -35,7 +43,14 @@ class DrugController extends Controller
      */
     public function show(string $id)
     {
-        return view('Drug.drugDetails');
+        $drugDetailClass = new drug();
+        $drugDetail = $drugDetailClass->drugDetail($id);
+        if ($drugDetail == null) {
+            return view('errors.404');
+        }
+        return view('Drug.drugDetails',[
+            "drugDetail" => $drugDetail
+        ]);
     }
 
     /**
@@ -43,7 +58,14 @@ class DrugController extends Controller
      */
     public function edit(string $id)
     {
-        return view('Drug.editDrug');
+        $drugDetailClass = new drug();
+        $drugDetail = $drugDetailClass->drugDetail($id);
+        if ($drugDetail == null) {
+            return view('errors.404');
+        }
+        return view('Drug.editDrug',[
+            "drugDetail" => $drugDetail
+        ]);
     }
 
     /**
@@ -51,7 +73,9 @@ class DrugController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $drugUpdateClass =new drug();
+        $drugUpdateClass -> drugUpdate($request, $id);
+        return redirect('/drug');
     }
 
     /**
@@ -59,6 +83,12 @@ class DrugController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $drugDetailClass = new drug();
+        $drugDetail = $drugDetailClass->drugDetail($id);
+        if($drugDetail !== null) {
+            $drugDel = $drugDetailClass->drugDel($id);
+        }
+        return redirect("/drug");
+       
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
             $table->string('drug_name',256);
-            $table->string('type',256);
+            $table->interger('type',256);
             $table->integer('stock');
             $table->integer('price');
             $table->integer('del_flg')->default(0);

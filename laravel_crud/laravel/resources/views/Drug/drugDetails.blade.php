@@ -19,10 +19,10 @@
         <span>-></span>
     </div>
     <div class=" flex flex-col">
-        <span>Para</span>
-        <span>29g</span>
-        <span>4</span>
-        <span>$4</span>
+        <span>{{ $drugDetail->drug_name }}</span>
+        <span>{{ $drugDetail->type }}</span>
+        <span>{{ $drugDetail->stock }}</span>
+        <span>${{ $drugDetail->price }}/per items</span>
     </div>
 </section>
 @endsection
