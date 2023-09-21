@@ -4,6 +4,10 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RoomController;
+use App\Models\appointment;
+use App\Models\drug;
+use App\Models\message;
+use App\Models\room;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +22,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    $roomClass = new room();
+    $roomData = $roomClass->roomData();
+    $messageClass = new message();
+    $messageData = $messageClass->messageData();
+    $drugListClass = new drug();
+    $drugList = $drugListClass->drugList();
+    $apmListClass = new appointment();
+    $apmList = $apmListClass->apmList();
+    return view('dashboard', [
+        'apmList' => $apmList,
+        "roomData" => $roomData,
+        'messageData' => $messageData,
+        "drugList" => $drugList,
+    ]);
 });
 
 Route::resource('room', RoomController::class);

@@ -17,6 +17,8 @@ class AppointmentController extends Controller
         return view('Apointment.appointList', [
             'apmList' => $apmList
         ]);
+        
+
     }
 
     /**
