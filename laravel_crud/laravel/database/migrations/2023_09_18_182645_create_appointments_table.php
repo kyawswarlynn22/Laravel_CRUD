@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('dr_name',256);
+            $table->integer('specialist');
             $table->integer('room_no');
             $table->string('date_time',256);
             $table->integer('del_flg')->default(0);

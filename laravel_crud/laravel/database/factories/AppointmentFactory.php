@@ -18,6 +18,7 @@ class AppointmentFactory extends Factory
     {
         return [
             "dr_name"=>fake()->name(),
+            "specialist" =>fake()->numberBetween($min = 1 ,$max = 10),
             "room_no"=>fake()->numerify('###'),
             "date_time"=>fake()->dateTime(),
         ];

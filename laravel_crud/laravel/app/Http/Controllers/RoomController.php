@@ -33,6 +33,11 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'room_no' => 'required',
+            'person' => 'required',
+            'price' => 'required',
+        ]);
         $roomAddClass = new room();
         $roomAddClass->addRoom($request);
         return redirect('/room');
@@ -75,6 +80,11 @@ class RoomController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validatedData = $request->validate([
+            'room_no' => 'required',
+            'person' => 'required',
+            'price' => 'required',
+        ]);
         $roomupdateClass = new room();
         $roomupdateClass->roomUpdate($request, $id);
         return redirect('/room');
@@ -88,7 +98,7 @@ class RoomController extends Controller
         $roomDelClass = new room();
         $roomDetail = $roomDelClass->roomDetail($id);
         if ($roomDetail !== null) {
-           $roomDelClass->roomDel($id);
+            $roomDelClass->roomDel($id);
         }
         return redirect('/room');
     }

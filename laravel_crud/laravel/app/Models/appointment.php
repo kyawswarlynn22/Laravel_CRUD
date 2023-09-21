@@ -29,6 +29,7 @@ class appointment extends Model
             ->where('id', $id)
             ->update([
                 'dr_name' => $request->doctor,
+                'specialist' => $request->specialist,
                 'room_no' => $request->room,
                 'date_time' => $request->date,
             ]);
@@ -48,6 +49,7 @@ class appointment extends Model
         DB::table('appointments')
             ->insert([
                 'dr_name' => $request->doctor,
+                'specialist' => $request->specialist,
                 'room_no' => $request->room,
                 'date_time' => $request->date,
             ]);

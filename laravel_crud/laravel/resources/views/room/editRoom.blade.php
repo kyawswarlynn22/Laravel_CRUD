@@ -14,7 +14,7 @@
                     <label for="room_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Room No</label>
                     <input type="text" name="room_no" id="room_no" value="{{ $roomDetail->room_no }}"
                         class="bg-gray-50 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Please Input the Number Only" required>
+                        placeholder="Please Input the Number Only" >
                 </div>
                 <div class="mb-6 w-full">
                     <label for="status"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\appointment;
+use App\Rules\ContainsValue;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -34,6 +35,11 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'doctor' => ['required', new ContainsValue],
+            'room' => 'required',
+            'date' => 'required',
+        ]);
         $apmAddClass = new appointment();
         $apmAddClass->apmAdd($request);
         return redirect('/appointment');
@@ -74,6 +80,11 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validatedData = $request->validate([
+            'doctor' => ['required', new ContainsValue],
+            'room' => 'required',
+            'date' => 'required',
+        ]);
         $apmUpdateClass = new appointment();
         $apmUpdateClass->apmUpdate($request, $id);
         return redirect('/appointment');

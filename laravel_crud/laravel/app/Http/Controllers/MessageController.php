@@ -34,10 +34,8 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $addMessageClass = new message();
-    $addMessageClass->addMessage($request);
+        $addMessageClass->addMessage($request);
         return redirect('/message');
-           
-        
     }
 
     /**
@@ -60,7 +58,7 @@ class MessageController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {   
+    {
         $messageDetailClass = new message();
         $messageDetail = $messageDetailClass->messageDetail($id);
         if ($messageDetail == null) {
@@ -77,9 +75,9 @@ class MessageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       $messageUpdateClass = new message();
-       $messageUpdateClass->updateMessage($request,$id);
-       return redirect('/message');
+        $messageUpdateClass = new message();
+        $messageUpdateClass->updateMessage($request, $id);
+        return redirect('/message');
     }
 
     /**
@@ -90,10 +88,10 @@ class MessageController extends Controller
         $messageDetailClass = new message();
         $messageDetail = $messageDetailClass->messageDetail($id);
         if ($messageDetail !== null) {
-            $messageDetailClass -> messageDel($id);
+            $messageDetailClass->messageDel($id);
         } else {
             return view('errors.404');
-        } 
+        }
         return redirect("/message");
     }
 }

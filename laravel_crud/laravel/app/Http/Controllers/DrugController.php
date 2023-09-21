@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\drug;
-use App\Models\room;
+use App\Rules\CustomValidationRule;
 use Illuminate\Http\Request;
 
 class DrugController extends Controller
@@ -33,6 +33,12 @@ class DrugController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'weight' => ['required', new CustomValidationRule],
+            'drug_name' => 'required',
+            'price' => 'required',
+            'stock' => 'required'
+        ]);
         $drugAddClass = new drug();
         $drugAddClass->drugAdd($request);
         return redirect('/drug');
@@ -73,6 +79,12 @@ class DrugController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validatedData = $request->validate([
+            'weight' => ['required', new CustomValidationRule],
+            'drug_name' => 'required',
+            'price' => 'required',
+            'stock' => 'required'
+        ]);
         $drugUpdateClass =new drug();
         $drugUpdateClass -> drugUpdate($request, $id);
         return redirect('/drug');
