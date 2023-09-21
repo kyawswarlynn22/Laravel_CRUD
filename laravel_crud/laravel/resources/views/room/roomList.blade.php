@@ -4,11 +4,15 @@
 @section('body')
 
     <p class=" text-2xl">Room List</p>
+    <a href="/room/create"><button class=" bg-blue-600 text-white px-4 py-2 rounded-lg float-right m-3 " >Add Room</button></a>
     <div class="relative overflow-x-auto mt-3 shadow-md w-full sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 
             <thead class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th scope="col" class="px-6 py-3">
+                        No
+                    </th>
                     <th scope="col" class="px-6 py-3">
                         Room No
                     </th>
@@ -29,6 +33,9 @@
             <tbody>
                 @forelse ($roomData as $room)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            {{ $loop->iteration }}.
+                        </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Rom{{ $room->room_no }}
                         </th>
@@ -73,9 +80,9 @@
                             <form action="/room/{{ $room->id }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><svg
-                                        width="24" height="24" viewBox="0 0 16 16"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                <button type="submit"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><svg width="24"
+                                        height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <path fill="#ef4444"
                                             d="M7 3h2a1 1 0 0 0-2 0ZM6 3a2 2 0 1 1 4 0h4a.5.5 0 0 1 0 1h-.564l-1.205 8.838A2.5 2.5 0 0 1 9.754 15H6.246a2.5 2.5 0 0 1-2.477-2.162L2.564 4H2a.5.5 0 0 1 0-1h4Zm1 3.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0v-5ZM9.5 6a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0v-5a.5.5 0 0 1 .5-.5Zm-4.74 6.703A1.5 1.5 0 0 0 6.246 14h3.508a1.5 1.5 0 0 0 1.487-1.297L12.427 4H3.573l1.187 8.703Z" />
                                     </svg></button>
@@ -88,11 +95,11 @@
             </tbody>
         </table>
         <div class=" p-5">
-            {{ $roomData->links("pagination::tailwind") }}
+            {{ $roomData->links('pagination::tailwind') }}
         </div>
     </div>
-   
-       
-    
-    
+
+
+
+
 @endsection

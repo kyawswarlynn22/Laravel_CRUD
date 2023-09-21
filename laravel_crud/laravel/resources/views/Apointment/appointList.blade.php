@@ -4,11 +4,15 @@
 
 @section('body')
     <p class=" text-2xl">Appointment List</p>
+    <a href="/appointment/create"><button class=" bg-blue-600 text-white px-4 py-2 rounded-lg float-right m-3 " >Add Appointment</button></a>
     <div class="relative mt-5 overflow-x-auto shadow-md w-full sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 
             <thead class="text-xs text-white uppercase w-full bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th scope="col" class="px-6 py-3">
+                        No
+                    </th>
                     <th scope="col" class="px-6 py-3">
                         Doctor Name
                     </th>
@@ -21,12 +25,14 @@
                     <th scope="col" class="px-6 py-3">
 
                     </th>
-
                 </tr>
             </thead>
             <tbody>
                 @forelse ($apmList as $apm)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">
+                            {{ $loop->iteration }}.
+                        </td>
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Dr.{{ $apm->dr_name }}(
                             @if ($apm->specialist == 1)
