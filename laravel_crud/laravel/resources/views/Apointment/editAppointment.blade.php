@@ -42,7 +42,7 @@
             </div>
             <span class=" ml-[82%]">
                 <button class=" bg-yellow-400 text-white rounded-lg font-medium px-5 py-2">Update</button>
-                <button class=" bg-gray-400 rounded-lg font-medium px-5 py-2">Cancel</button>
+                <a href="/appointment"><button type="button" class=" bg-gray-400 rounded-lg font-medium px-5 py-2">Cancel</button></a>
             </span>
         </div>
     </form>

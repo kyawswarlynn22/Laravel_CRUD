@@ -1,11 +1,9 @@
 @extends('layout.sidebarandnav')
 
-@section('title', 'Add Message')
+@section('title', 'UnreadMessage List')
 
 @section('body')
-    <p class=" text-2xl">Add Message</p>
-
-
+    <p class=" text-2xl">UnreadMessage List</p>
     <div class="relative overflow-x-auto mt-3 shadow-md w-full sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 

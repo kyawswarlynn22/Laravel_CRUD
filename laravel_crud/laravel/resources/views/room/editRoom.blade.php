@@ -6,7 +6,7 @@
     <p class=" text-2xl">Edit Room</p>
     <form action="/room/{{ $roomDetail->id }}" method="post">
         @csrf
-        @method("put")
+        @method('put')
         <div class="mt-3 rounded-lg shadow-lg p-5">
 
             <div class="flex w-full justify-around items-center space-x-3 p-5">
@@ -47,7 +47,8 @@
             <span class=" ml-[82%]">
                 <a href=""> <button
                         class=" bg-yellow-400 text-white rounded-lg font-medium px-5 py-2">Update</button></a>
-                <a href="/room"> <button class=" bg-gray-400 rounded-lg font-medium px-5 py-2">Cancel</button></a>
+                <a href="/room"> <button type="button"
+                        class=" bg-gray-400 rounded-lg font-medium px-5 py-2">Cancel</button></a>
             </span>
         </div>
     </form>
