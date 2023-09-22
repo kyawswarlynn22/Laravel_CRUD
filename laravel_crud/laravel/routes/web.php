@@ -5,10 +5,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RoomController;
-use App\Models\appointment;
-use App\Models\drug;
-use App\Models\message;
-use App\Models\room;
 use Illuminate\Support\Facades\Route;
 
 /*
