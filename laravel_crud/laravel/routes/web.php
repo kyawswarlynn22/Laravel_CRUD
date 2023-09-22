@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RoomController;
@@ -21,22 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $roomClass = new room();
-    $roomData = $roomClass->roomData();
-    $messageClass = new message();
-    $messageData = $messageClass->messageData();
-    $drugListClass = new drug();
-    $drugList = $drugListClass->drugList();
-    $apmListClass = new appointment();
-    $apmList = $apmListClass->apmList();
-    return view('dashboard', [
-        'apmList' => $apmList,
-        "roomData" => $roomData,
-        'messageData' => $messageData,
-        "drugList" => $drugList,
-    ]);
-});
+Route::get('/',[DashboardController::class,'dashboard']);
 
 Route::resource('room', RoomController::class);
 
