@@ -200,6 +200,7 @@
                     d="M1 1h15M1 7h15M1 13h15" />
             </svg>
         </button>
+      <a href="/signout">  <button class=" bg-yellow-400 px-5 py-2 rounded-lg">Logout</button></a>
     </div>
 
 </nav>
