@@ -39,7 +39,7 @@ class Login extends Controller
         ]);
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("/")->withSuccess('have signed-in');
+        return redirect("dashboard")->withSuccess('have signed-in');
     }
 
 
@@ -58,10 +58,10 @@ class Login extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('dashboard');
+            return redirect('/dashboarddata');
         }
 
-        return redirect("login")->withSuccess('are not allowed to access');
+        return redirect('/')->withSuccess('are not allowed to access');
     }
 
     /**
@@ -72,7 +72,7 @@ class Login extends Controller
         Session::flush();
         Auth::logout();
 
-        return Redirect('login');
+        return Redirect('/');
     }
 
     /**
@@ -87,11 +87,11 @@ class Login extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/')
+            return redirect()->intended('dashboard')
                 ->withSuccess('Signed in');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("/")->withSuccess('Login details are not valid');
     }
 
   
