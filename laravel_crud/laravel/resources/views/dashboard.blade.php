@@ -3,7 +3,8 @@
 @section('title', 'Dashboard');
 
 @section('body')
-    <div class="flex justify-between flex-wrap">
+
+<div class="flex justify-between flex-wrap">
         <div class=" relative pl-0  border w-56 rounded-lg shadow-xl">
             <div class="h-full  absolute rounded-tl-lg rounded-bl-lg left-0 w-2 bg-blue-600"></div>
             <p class="mt-2 p-2 text-2xl pl-5">Room</p>
@@ -141,7 +142,8 @@
 
                 </tbody>
             </table>
-           <a href="/room"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See More</button></a>
+            <a href="/room"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See
+                    More</button></a>
         </div>
 
         <div class="relative overflow-x-auto shadow-md w-full sm:rounded-lg">
@@ -180,7 +182,8 @@
                     @endforelse
                 </tbody>
             </table>
-            <a href="/message"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See More</button></a>
+            <a href="/message"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See
+                    More</button></a>
         </div>
 
     </div>
@@ -236,7 +239,8 @@
                 </tbody>
 
             </table>
-            <a href="/drug"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See More</button></a>
+            <a href="/drug"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See
+                    More</button></a>
         </div>
 
         <div class="relative overflow-x-auto shadow-md w-full sm:rounded-lg">
@@ -279,7 +283,8 @@
 
                 </tbody>
             </table>
-            <a href="/appointment"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See More</button></a>
+            <a href="/appointment"> <button class=" float-right bg-blue-600 px-3 py-1 rounded-md text-white m-2">See
+                    More</button></a>
         </div>
 
     </div>

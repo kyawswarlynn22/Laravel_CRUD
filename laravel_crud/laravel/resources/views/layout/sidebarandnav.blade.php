@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/31104486ca.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <title>@yield('title')</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <!-- drawer component -->
 <aside id="drawer-navigation"
@@ -29,7 +31,7 @@
     <div class="py-4 overflow-y-auto">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="/"
+                <a href="/dashboard"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -165,10 +167,13 @@
     </div>
 </aside>
 
+
+
+
 <nav
     class=" bg-blue-700  dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" class="flex items-center">
+        <a href="/dashboard" class="flex items-center">
             <img src="{{ asset('images/asiaRoyalLogo.png') }}" class="h-10 mr-3" alt="SKS Logo">
             <span class="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">Asia Royal
                 Hopital</span>
@@ -200,7 +205,8 @@
                     d="M1 1h15M1 7h15M1 13h15" />
             </svg>
         </button>
-      <a href="/signout">  <button class=" bg-yellow-400 px-5 py-2 rounded-lg">Logout</button></a>
+        <button id="logoutButton" class=" bg-yellow-400 px-5 py-2 rounded-lg">Logout</button>
+        <a href="/signout"> <button id="logout" class=" hidden bg-yellow-400 px-5 py-2 rounded-lg"></button></a>
     </div>
 
 </nav>
@@ -211,5 +217,25 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 
+<script>
+    // Add an event listener to the logout button
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        Swal.fire({
+            title: 'Are you sure?',
+            html: ` `,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout',
+            backdrop: false, // Disable the backdrop blur effect
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const button = document.getElementById("logout");
+                button.click();
+            }
+        });
+
+    });
+</script>
 
 </html>

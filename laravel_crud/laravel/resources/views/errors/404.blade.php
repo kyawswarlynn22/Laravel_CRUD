@@ -28,7 +28,7 @@
             <p class="font-PlayfairSC text-5xl">OH NO!!</p>
             <span class="font-PlayfairSC text-5xl">ERROR</span>
             <span>Page not found</span><br><br>
-            <a href="/"><button class="w-40 h-10 rounded-xl border border-solid text-white bg-blue-600 m-5 md:text-base text-sm">Go To Dashboard</button></a>
+            <a href="/"><button class="w-40 h-10 rounded-xl border border-solid text-white bg-blue-600 m-5 md:text-base text-sm">Go To Login</button></a>
         </div>
         <img src="{{ asset('images/404.png') }}" alt="404" class="md:w-96 w-48">
     </div>

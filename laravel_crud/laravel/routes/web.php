@@ -26,16 +26,19 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/dashboard', [Login::class, 'dashboard']); 
-Route::get('/dashboarddata',[DashboardController::class,'dashboard']);
+
 Route::get('/', [Login::class, 'index']);
 Route::post('/signin', [Login::class, 'customLogin']);
-Route::get('signup', [Login::class, 'signup']);
-Route::post('/registration', [Login::class, 'customeRegistration']); 
+ Route::get('signup', [Login::class, 'signup']);
+ Route::post('/registration', [Login::class, 'customeRegistration']); 
+
+Route::middleware('logincheck')->group(function () {
+
+// Route::get('/dashboard', [Login::class, 'dashboard']); 
+
+Route::get('/dashboard',[DashboardController::class,'dashboard']);
+
 Route::get('signout', [Login::class, 'signOut']);
-
-
-// Route::resource('login', Login::class);
 
 Route::resource('room', RoomController::class);
 
@@ -44,3 +47,6 @@ Route::resource('message', MessageController::class);
 Route::resource('drug', DrugController::class);
 
 Route::resource('appointment', AppointmentController::class);
+
+} );
+// Route::resource('login', Login::class);

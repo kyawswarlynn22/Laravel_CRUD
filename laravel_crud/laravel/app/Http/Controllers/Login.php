@@ -28,8 +28,9 @@ class Login extends Controller
 
     public function customeRegistration(Request $request)
     {
+        $request->session()->put("email", $request->email);
         $request->validate([
-            $name = 'name' => ['required', new UsernameValidation],
+            'name' => ['required','min:4','max:20', new UsernameValidation],
             'email' => 'required|email|unique:users',
             'password' => [
                 'required',
@@ -39,7 +40,8 @@ class Login extends Controller
         ]);
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("dashboard")->withSuccess('have signed-in');
+        return redirect()->intended('dashboard')
+            ->withSuccess('Registration Successfully');
     }
 
 
@@ -52,21 +54,7 @@ class Login extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function dashboard()
-    {
-        if (Auth::check()) {
-            return redirect('/dashboarddata');
-        }
-
-        return redirect('/')->withSuccess('are not allowed to access');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+ 
     public function signOut()
     {
         Session::flush();
@@ -80,6 +68,7 @@ class Login extends Controller
      */
     public function customLogin(Request $request)
     {
+
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -87,13 +76,13 @@ class Login extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+            $request->session()->put("email", $request->email);
             return redirect()->intended('dashboard')
-                ->withSuccess('Signed in');
+                ->withSuccess('Login Successfully');
         }
+        Session::flush();
 
-        return redirect("/")->withSuccess('Login details are not valid');
+
+        return redirect("/")->withSuccess('Worng Email or username');
     }
-
-  
- 
 }

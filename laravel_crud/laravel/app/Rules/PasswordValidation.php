@@ -16,9 +16,9 @@ class PasswordValidation implements ValidationRule
      */
     protected $request;
 
-    public function __construct(Request $request) 
+    public function __construct(Request $request)
     {
-      $this->request = $request;
+        $this->request = $request;
     }
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
@@ -42,8 +42,13 @@ class PasswordValidation implements ValidationRule
         };
 
         $username = $this->request->input('name');
-        if(strpos($value, $username) !== false) {
-            $fail('Password cannot contain username');
-          }
+        $usernamelower = strtolower($username);
+        $valuelower = strtolower($value);
+        $array = str_split($valuelower, 2);
+        foreach ($array as  $index) {
+            if (strpos($usernamelower, $index) !== false) {
+                $fail('Username not contain in password ');
+            }
+        }
     }
 }

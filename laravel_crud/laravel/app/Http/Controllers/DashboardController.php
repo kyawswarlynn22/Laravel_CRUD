@@ -7,6 +7,8 @@ use App\Models\drug;
 use App\Models\message;
 use App\Models\room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PHPUnit\TextUI\Configuration\Php;
 
 class DashboardController extends Controller
 {
@@ -20,7 +22,8 @@ class DashboardController extends Controller
         $drugList = $drugListClass->drugList();
         $apmListClass = new appointment();
         $apmList = $apmListClass->apmList();
-        return view('dashboard', [
+
+        return view("/dashboard", [
             'apmList' => $apmList,
             "roomData" => $roomData,
             'messageData' => $messageData,
