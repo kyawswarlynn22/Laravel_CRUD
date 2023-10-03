@@ -1,54 +1,62 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class drug extends Model
+class Drug extends Model  implements Auditable
 {
     use HasFactory;
 
+    use \OwenIt\Auditing\Auditable;
+
+    protected $table = 'drugs'; // Specify the table name
+
+    protected $fillable = ['drug_name', 'type', 'stock', 'price', 'del_flg'];
+
     public function drugList()
     {
-        return DB::table('drugs')->orderBy('id', 'desc')->where('del_flg', 0)->paginate(5);
+        return Drug::orderBy('id', 'desc')
+            ->where('del_flg', 0)
+            ->paginate(5);
     }
 
     public function drugDetail($id)
     {
-        return DB::table('drugs')->where('id', $id)->first();
+        return Drug::where('id', $id)->first();
     }
 
     public function drugUpdate($request, $id)
     {
-        DB::table('drugs')
-            ->where('id', $id)
-            ->update([
+        $drug = Drug::find($id);
+        if ($drug) {
+            $drug->update([
                 'drug_name' => $request->drug_name,
                 'type' => $request->weight,
                 'stock' => $request->stock,
                 'price' => $request->price,
             ]);
+        }
     }
 
     public function drugDel($id)
     {
-        DB::table('drugs')
-            ->where('id', $id)
-            ->update([
+        $drug = Drug::find($id);
+        if ($drug) {
+            $drug->update([
                 'del_flg' => 1
             ]);
+        }
     }
 
-    public function drugAdd( $request)
+    public function drugAdd($request)
     {
-        DB::table('drugs')
-            ->insert([
-                'drug_name' => $request->drug_name,
-                'type' => $request->weight,
-                'stock' => $request->stock,
-                'price' => $request->price,
-            ]);
+        Drug::create([
+            'drug_name' => $request->drug_name,
+            'type' => $request->weight,
+            'stock' => $request->stock,
+            'price' => $request->price,
+        ]);
     }
 }
